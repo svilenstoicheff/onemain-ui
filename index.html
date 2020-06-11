@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="css/default.css" />
+
+</head>
+
+<body>
+    <h1>One-time Loan Payment</h1>
+    <p>Fill out the form below to complete your payment.</p>
+    <form>
+        <section class="grid">
+            <fieldset>
+                <label class="text">
+                    <h4>Loan Account Number</h4>
+                    <input type="text" name="loanAccountNumber" class="noBorder">
+                </label>
+            </fieldset>
+            <fieldset class="payment">
+                <h4>Type of Account:</h4>
+                <input type="radio" name="payment" id="paymentChecking" value="checking" checked="checked">
+                <label for="paymentChecking">Checking</label>
+                <input type="radio" name="payment" id="paymentDebit" value="debit">
+                <label for="paymentDebit">Debit Card</label>
+            </fieldset>
+            <fieldset>
+                <label class="text">
+                    <h4>Routing Number</h4>
+                    <input type="text" name="routingNumber" class="noBorder">
+                </label>
+            </fieldset>
+            <fieldset>
+                <label class="text">
+                    <h4>Bank Account Number</h4>
+                    <input type="text" name="bankAccountNumber" class="noBorder">
+                </label>
+            </fieldset>
+            <fieldset>
+                <label class="text">
+                    <h4>Confirm Bank Account Number</h4>
+                    <input type="text" name="confirmBankAccountNumber" class="noBorder">
+                </label>
+            </fieldset>
+            <section class="sidebar">
+                <h3>Where can I find the routing and account number?</h3>
+                <div class="check-image"></div>
+                <div class="card-image hidden"></div>
+            </section>
+
+        </section>
+        <button type="submit">Make Payment</button>
+
+
+    </form>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
