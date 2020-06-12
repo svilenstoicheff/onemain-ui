@@ -2,59 +2,105 @@
 <html>
 
 <head>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/default.css" />
-
+    <script src="js/index.js"></script>
 </head>
 
 <body>
-    <h1>One-time Loan Payment</h1>
-    <p>Fill out the form below to complete your payment.</p>
-    <form>
-        <section class="grid">
-            <fieldset>
-                <label class="text">
-                    <h4>Loan Account Number</h4>
-                    <input type="text" name="loanAccountNumber" class="noBorder">
-                </label>
-            </fieldset>
-            <fieldset class="payment">
-                <h4>Type of Account:</h4>
-                <input type="radio" name="payment" id="paymentChecking" value="checking" checked="checked">
-                <label for="paymentChecking">Checking</label>
-                <input type="radio" name="payment" id="paymentDebit" value="debit">
-                <label for="paymentDebit">Debit Card</label>
-            </fieldset>
-            <fieldset>
-                <label class="text">
-                    <h4>Routing Number</h4>
-                    <input type="text" name="routingNumber" class="noBorder">
-                </label>
-            </fieldset>
-            <fieldset>
-                <label class="text">
-                    <h4>Bank Account Number</h4>
-                    <input type="text" name="bankAccountNumber" class="noBorder">
-                </label>
-            </fieldset>
-            <fieldset>
-                <label class="text">
-                    <h4>Confirm Bank Account Number</h4>
-                    <input type="text" name="confirmBankAccountNumber" class="noBorder">
-                </label>
-            </fieldset>
-            <section class="sidebar">
-                <h3>Where can I find the routing and account number?</h3>
-                <div class="check-image"></div>
-                <div class="card-image hidden"></div>
+    <main>
+        <h1>One-time Loan Payment</h1>
+        <p>Fill out the form below to complete your payment.</p>
+        <form id="loanPayment" name="checking" action="https://onemain.com/submitpayment/" method="POST">
+            <section class="grid">
+                <fieldset class="rowSpanTwo">
+                    <label class="text">
+                        <h4>Loan Account Number</h4>
+                        <input type="text" name="loanAccountNumber" class="noBorder">
+                    </label>
+                </fieldset>
+                <fieldset class="payment">
+                    <h4>Type of Account:</h4>
+                    <input type="radio" name="payment" id="paymentChecking" value="checking" checked="checked">
+                    <label for="paymentChecking">Checking</label>
+                    <input type="radio" name="payment" id="paymentDebit" value="debit">
+                    <label for="paymentDebit">Debit Card</label>
+                </fieldset>
+                <fieldset class="checking">
+                    <label class="text">
+                        <h4>Routing Number</h4>
+                        <input type="text" name="routingNumber" class="noBorder">
+                    </label>
+                </fieldset>
+                <fieldset class="checking">
+                    <label class="text">
+                        <h4>Bank Account Number</h4>
+                        <input type="text" name="bankAccountNumber" class="noBorder">
+                    </label>
+                </fieldset>
+                <fieldset class="checking">
+                    <label class="text">
+                        <h4>Confirm Bank Account Number</h4>
+                        <input type="text" name="confirmBankAccountNumber" class="noBorder">
+                    </label>
+                </fieldset>
+
+                <fieldset class="debit hidden">
+                    <label class="text">
+                        <h4>Card Number</h4>
+                        <input type="text" name="cardNumber" class="noBorder">
+                    </label>
+                </fieldset>
+
+                <fieldset class="debit hidden">
+                    <label class="text">
+                        <h4>Name on Card</h4>
+                        <input type="text" name="nameOnCard" class="noBorder">
+                    </label>
+                </fieldset>
+
+                <section class="debit flex hidden">
+                    <div>
+                        <label class="expirationDate">
+                            <h4>Expiration Date</h4>
+                            <input type="date" name="expirationDate" class="expirationDate hidden">
+                        </label>
+                    </div>
+                    <div>
+                        <label class="text">
+                            <h4>CVV</h4>
+                            <input type="text" name="cvvNumber" class="cvv expirationDate noBorder" maxlength="3">
+                        </label>
+                    </div>
+                </section>
+
+                <section class="sidebar">
+                    <section class="checking">
+                        <h3>Where can I find the routing and account number?</h3>
+                        <div class="check-image"></div>
+                        <div class="linesContainer">
+                            <div>
+                                <span class="lines">
+                                    <hr /></span>
+                                <span>Routing number</span>
+                            </div>
+                            <div>
+                                <span class="lines">
+                                    <hr /></span>
+                                <span>Account number</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="debit hidden">
+                        <h3>Where can I find the CVV number?</h3>
+                        <div class="card-image"></div>
+                    </section>
+                </section>
             </section>
-
-        </section>
-        <button type="submit">Make Payment</button>
-
-
-    </form>
-    <script src="js/index.js"></script>
+            <button type="submit">Make Payment</button>
+        </form>
+    </main>
 </body>
 
 </html>
