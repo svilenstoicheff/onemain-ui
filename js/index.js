@@ -57,9 +57,11 @@ function validateChecking(e) {
     let formReady = false;
     const inputs = ['loanAccountNumber', 'routingNumber', 'bankAccountNumber', 'confirmBankAccountNumber'];
 
-    inputs.forEach(el => {
+    let counter = 0;
+    while(counter < inputs.length) {
         formReady = false;
-        let input = document.querySelector('input[name=' + el + ''),
+        let el = inputs[counter],
+            input = document.querySelector('input[name=' + el + ''),
             error = document.createElement('div'),
             parent = input.parentElement,
             heading4 = parent.querySelector('h4'),
@@ -71,23 +73,30 @@ function validateChecking(e) {
             error.innerText = errorMessages[el];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else if (!Number.isInteger(Number(inputValue))) {
             error.innerText = errorMessages['numbersOnly'];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else if (el === 'routingNumber' && inputValue.length > 9) {
             error.innerText = errorMessages['routingNumber9'];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else if (el === 'confirmBankAccountNumber' &&
             inputValue !== document.querySelector('[name=bankAccountNumber]').value) {
             error.innerText = errorMessages['numbersDontMatch'];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else {
             formReady = true;
         }
-    });
+
+        counter++;
+    }
+
     return formReady;
 }
 
@@ -96,9 +105,12 @@ function validateDebit(e) {
 
     let formReady = false;
     const inputs = ['loanAccountNumber', 'cardNumber', 'nameOnCard', 'expirationDate', 'cvvNumber'];
-    inputs.forEach(el => {
+
+    let counter = 0;
+    while(counter < inputs.length) {
         formReady = false;
-        let input = document.querySelector('input[name=' + el + ''),
+        let el = inputs[counter],
+            input = document.querySelector('input[name=' + el + ''),
             error = document.createElement('div'),
             parent = input.parentElement,
             heading4 = parent.querySelector('h4'),
@@ -109,27 +121,25 @@ function validateDebit(e) {
         input.classList.remove('hidden');
         if (inputValue === '') {
             error.innerText = errorMessages[el];
-
-            if (el === 'cvvNumber' || el === 'expirationDate') {
-                parent.after(error);
-                heading4.classList.add('error');
-            } else {
-                parent.after(error);
-                heading4.classList.add('error');
-            }
-
+            parent.after(error);
+            heading4.classList.add('error');
+            break;
         } else if (el !== 'nameOnCard' && el !== 'expirationDate' && !Number.isInteger(Number(inputValue))) {
             error.innerText = errorMessages['numbersOnly'];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else if (el === 'cvvNumber' && inputValue.length < 3) {
             error.innerText = errorMessages['cvvNumber3'];
             parent.after(error);
             heading4.classList.add('error');
+            break;
         } else {
             formReady = true;
         }
-    });
+        counter++;
+    }
+
     return formReady;
 }
 
