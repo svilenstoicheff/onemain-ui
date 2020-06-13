@@ -33,7 +33,7 @@ h4.error {color: #ce0c24;}
     grid-gap: .1em;
     border: .1em solid #d0d5d8;
     font-size: .75em;
-    max-width: 44rem; /* as designed */
+    width: 44rem; /* as designed */
 }
 
 fieldset {
