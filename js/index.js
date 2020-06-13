@@ -38,7 +38,6 @@ function attachEvents() {
     });
 
     document.querySelector('label.expirationDate').addEventListener('click', e => {
-        console.log(e.target);
         e.target.classList.remove('hidden');
     });
 
